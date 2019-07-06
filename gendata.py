@@ -219,7 +219,7 @@ class GenData(object):
                                 else:
 
                                     # 将训练数据设置为真实地雷，表示计算机不用计算
-                                    nearData = predictReulst = [1, 0]
+                                    nearData = predictReulst = [1., 0.]
 
                                 nearData = GenData.getNearAreaData(userTable, currentScanX, currentScanY)
 
