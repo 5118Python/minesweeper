@@ -160,7 +160,8 @@ if __name__ == '__main__':
 
             # 训练损失
             # cost = 0.5 * tf.reduce_sum(tf.pow(tf.subtract(output, y_), 2.0))
-            cost = tf.reduce_mean(tf.losses.sigmoid_cross_entropy(multi_class_labels=y_, logits=output))
+            # cost = tf.reduce_mean(tf.losses.sigmoid_cross_entropy(multi_class_labels=y_, logits=output))
+            cost = tf.reduce_mean(tf.losses.softmax_cross_entropy(onehot_labels=y_, logits=output))
 
             tf.add_to_collection('COSTL2', cost)
 
@@ -249,9 +250,9 @@ if __name__ == '__main__':
 
             allCount = len(trainingUserData)
             testCount = int(allCount/10)
-            testStart = len(trainingUserData) - testCount
+            testStart = allCount - testCount
 
-            print('从',allCount,'条训练数据后截取',testCount,'条测试数据数据')
+            print('从', allCount, '条训练数据后截取', testCount, '条测试数据数据')
 
             # 截取尾部十分之一的训练数据
             testUserData = trainingUserData[testStart:allCount, :]
@@ -260,7 +261,7 @@ if __name__ == '__main__':
             trainingUserData = trainingUserData[0:testStart, :]
             trainingNextData = trainingNextData[0:testStart, :]
 
-            print('截取后训练数据为:',len(trainingUserData))
+            print('截取后训练数据为:', len(trainingUserData))
 
         train_logs_path = "./logs/train"
         test_logs_path = "./logs/test"
