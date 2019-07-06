@@ -12,7 +12,6 @@ import _pickle as pickle
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--datapath', '-gdp', required=False, help='datapath', default=None)
     parser.add_argument('--withoutdatapath', '-wodp', required=False, help='withoutdatapath', default=None)
 
     parser.add_argument('--rmodel', '-m', required=False, help='rmodel', default=None)
